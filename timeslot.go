@@ -3,16 +3,7 @@ package timeslot
 import (
 	"fmt"
 	"time"
-
-	"golang.org/x/exp/slices"
-	"golang.org/x/text/date"
 )
-
-type periods struct {
-	minute string
-	hour   string
-	day    string
-}
 type SlotData struct {
 	Start      time.Time
 	End        time.Time
@@ -27,26 +18,25 @@ var defaultDate = SlotData{
 	End:        time.Now().UTC().Add(time.Hour),
 	Step:       5,
 	Period:     1,
-	DaysInWeek: []int{1, 2},
+	DaysInWeek: []int{1, 2, 3, 4, 5, 6, 7},
 	Gap:        5,
 }
 
 func SlotGenerator(data SlotData) {
 
-	
 	var start, end time.Time
-	if date.Start == nil {
+	if data.Start == nil {
 		start = defaultDate.Start
 	} else {
 		start = data.Start
 	}
 
-	if date.End == nil {
+	if data.End == nil {
 		end = defaultDate.End
 	} else {
 		end = data.End
 	}
-	
+
 
 	step := time.Duration(defaultDate.Step + defaultDate.Gap)
 	current, endTime := start, start
