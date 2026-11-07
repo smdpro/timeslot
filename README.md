@@ -26,7 +26,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/your-org/timeslot"
+	"github.com/smdpro/timeslot"
 )
 
 func main() {
